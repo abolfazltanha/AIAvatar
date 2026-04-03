@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>VCA Avatar (Anam)</title>
+  <title>LiveAvatar Test</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -14,20 +14,17 @@
       height: 100%;
       background: #000;
       overflow: hidden;
-      font-family: Arial, sans-serif;
     }
 
     #container {
       width: 100vw;
       height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
-    anam-agent {
+    iframe {
       width: 100%;
       height: 100%;
+      border: none;
     }
 
     #loading {
@@ -41,27 +38,32 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
       z-index: 10;
+      font-family: Arial;
     }
   </style>
 </head>
 
 <body>
 
-<div id="loading">Loading avatar...</div>
+<div id="loading">Loading LiveAvatar...</div>
 
 <div id="container">
-  <anam-agent agent-id="92a19ccb-194c-40c1-9994-101bad089cbc"></anam-agent>
+  <iframe
+    id="avatarFrame"
+    src="https://embed.liveavatar.com/v1/0c991148-17cf-4318-a4b6-7cc9e4126842"
+    allow="microphone *; camera *; autoplay"
+    title="LiveAvatar Embed">
+  </iframe>
 </div>
 
-<script src="https://unpkg.com/@anam-ai/agent-widget" async></script>
-
 <script>
-  // loading hide (approx)
-  setTimeout(() => {
-    document.getElementById('loading').style.display = 'none';
-  }, 2000);
+  const iframe = document.getElementById('avatarFrame');
+  const loading = document.getElementById('loading');
+
+  iframe.onload = () => {
+    loading.style.display = 'none';
+  };
 </script>
 
 </body>
